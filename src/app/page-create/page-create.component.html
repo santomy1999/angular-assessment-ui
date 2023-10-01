@@ -1,0 +1,120 @@
+<div class="container">
+    <div class="form-div">
+        <form (ngSubmit)="onPageSubmit(createPage)" #createPage="ngForm" >
+            <div class="input-container">
+                <label class="label-div" for="Name">Name</label>
+                <input class="input-div" type="text" id="Name" name="Name" ngModel><br><br>
+            </div>
+
+            <div class="input-container">
+                <label class="label-div" for="TableName">Table Name</label>
+                <!-- <input class="input-div" type="text" id="TableName" name="TableName"><br><br> -->
+                <select class="input-div" for="TableName" name="TableName" ngModel>
+                    <option value="" disabled selected>--Select an table--</option>
+                    <option *ngFor="let table of tableNames" value="Detail">{{table.name}}</option>
+                </select>
+            </div>
+
+            <div class="input-container">
+                <label class="label-div" for="Type">Type</label>
+                <select class="input-div" id="Type" name="Type" ngModel>
+                    <option value="" disabled selected>--Select an option--</option>
+                    <option value="Detail" >Detail</option>
+                    <option value="Form">Form</option>
+                    <option value="Summary">Summary</option>
+                </select><br><br>
+            </div>
+
+            <div class="input-container">
+                <label class="label-div" for="Sequence">Sequence</label>
+                <input class="input-div" type="number" id="Sequence" name="Sequence" ngModel><br><br>
+            </div>
+            
+            <div class="input-container">
+                <label class="label-div" for="SubSequence">Sub Sequence</label>
+                <input class="input-div" type="number" id="SubSequence" name="SubSequence" ngModel><br><br>
+            </div>
+            
+            <div class="input-container">
+                <label class="label-div" for="FormType">Form Type</label>
+                <select [disabled]="true" class="input-div" id="FormType" name="FormType" ngModel>
+                    <option value="" disabled selected>--Select an option--</option>
+                    <option value="Detail">Conditional</option>
+                    <option value="Form">Mandatory</option>
+                    <option value="Summary">Optional</option>
+                </select><br><br>
+            </div>
+
+            <div class="input-container">
+                <label class="label-div" for="Form Number">Form Number</label>
+                <input class="input-div" type="text" id="History" name="History"><br><br>
+            </div>
+
+            <div class="input-container">
+                <label class="label-div" for="Hide Premium">Hide Premium</label>
+                <input class="check-div" type="checkbox" id="HidePremium" name="HidePremium"><br><br>
+            </div>
+
+            <div class="input-container">
+                <label class="label-div">Hide Form:</label>
+                <input class="check-div" type="checkbox" id="HideForm" name="HideForm"><br><br>
+            </div>
+            
+
+
+            <div class="input-container">
+                <label class="label-div" for="Template File">Template File</label>
+                <input class="input-div"  type="text" id="TemplateFile" name="TemplateFile"><br><br>
+            </div>
+
+            <div class="input-container">
+                <label class="label-div" for="Condition">Condition</label>
+                <input class="input-div"  type="text" id="Condition" name="Condition"><br><br>
+            </div>
+
+            <div class="input-container">
+                <label class="label-div" for="Tab Condition">Tab Condition</label>
+                <input class="input-div"  type="text" id="TabCondition" name="TabCondition"><br><br>
+            </div>
+
+            <div class="input-container">
+                <label class="label-div" for="TabResource">Tab Resource</label>
+                <input class="input-div"  type="text" id="TabResource" name="TabResource"><br><br>
+            </div>
+
+            <div class="input-container">
+                <label class="label-div" for="MinimumOccurs">Minimum Occurs</label>
+                <input class="input-div" type="number" id="MinimumOccurs" name="MinimumOccurs"><br><br>
+            </div>
+
+            <div class="input-container">
+                <label class="label-div" for="Maximum Occurs">Maximum Occurs</label>
+                <input class="input-div" type="number" id="MaximumOccurs" name="MaximumOccurs"><br><br>
+            </div>
+
+            <div class="input-container">
+                <label class="label-div" for="Comment">Comment</label>
+                <!-- <input class="input-div" type="text" id="Comment" name="Comment"><br><br> -->
+                <textarea class="input-div "  ></textarea>
+            </div>
+
+            <div class="input-container">
+                <label class="label-div" for="Help Text">Help Text</label>
+                <input class="input-div" type="text" id="Help Text" name="Help Text"><br><br>
+            </div>
+
+            <div class="input-container">
+                <label class="label-div" for="Script Before">Script Before</label>
+                <input class="input-div" type="text" id="Script Before" name="Script Before"><br><br>
+            </div>
+
+            <div class="input-container">
+                <label class="label-div" for="Script After">Script After</label>
+                <input class="input-div" type="text" id="Script After" name="Script After"><br><br>
+            </div>
+            <div class="input-container">
+            <input class="input-button" type="submit" value="Submit">
+            </div>
+        </form>
+    </div>
+</div>

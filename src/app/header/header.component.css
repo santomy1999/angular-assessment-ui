@@ -1,0 +1,20 @@
+.wrapper{
+    /* padding-top: 50px; */
+}
+.header{
+    height: 200px;
+    /* padding: 30px 40px; */
+    margin: 5PX;
+    display: flex;
+    background-color: #fff;
+    
+}
+.site-slogan{
+    width: 520px;
+    margin-left:50px;
+    text-align:center;
+
+}
+h2{
+    font-size: 45px;
+}

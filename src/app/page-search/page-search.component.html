@@ -1,0 +1,72 @@
+<div class="container">
+    <div class="form-div">
+        <form (ngSubmit)="onSearch(searchPage)" #searchPage="ngForm" >
+            <div class="input-container">
+                <label class="label-div" for="search">Search Page</label>
+                <input class="input-div" type="text" name="search" id="search" [(ngModel)]="searchValue" >
+            </div>
+            <div class="input-container">
+                <label class="label-div-radio" for="name">
+                    Search By Name
+                </label>
+                <input type="radio"  name="searchBy" value="name" id="name" [(ngModel)]="searchBy">
+                <label class="label-div-radio" for="number">
+                    Search By Number
+                </label>
+                <input type="radio" name="searchBy" value="number" id="number" [(ngModel)]="searchBy" >
+                <br><br>
+                <input type="button" class="input-div" value="Reset" (click)="onReset()">
+            </div>
+            <div class="input-container">
+                <label class="label-div-check" for="detail">
+                     Detail
+                </label>
+                <input type="checkbox" class="check-div" name="formType" value="detail" id="detail" [(ngModel)]="detailCheckBox">
+                <label class="label-div-check" for="form">
+                    Form
+               </label>
+                <input type="checkbox" class="check-div" name="formType" value="form" id="form"  [(ngModel)]="formCheckBox">
+                <label class="label-div-check" for="summary">
+                    Summary
+               </label>
+                <input type="checkbox" class="check-div" name="formType" value="summary" id="summary"  [(ngModel)]="summaryCheckBox">
+            
+               
+                <input type="button" class="input-div" value="Select All" (click)="selectAll()">
+            </div>
+
+            <div class="input-container">
+                <input class="input-div" type="submit" value="Search">
+            </div>
+            
+            
+
+        </form>
+    </div>
+    <table *ngIf='filteredForm && filteredForm.length >0'>
+        <thead>
+            <tr >
+                <th>Name</th>
+                <th>Number</th>
+                <th>Type</th>
+                <th>Sequence</th>
+                <th>Comment</th>
+                <th>View Page</th>
+                <th>Edit Page</th>
+                <th>Delete Page</th>
+            </tr>
+        </thead>
+            <tr  *ngFor="let form of filteredForm">
+        <!-- </tr>/*| paginate:{itemsPerPage:50,currentPage:page,totalItems:totalLength,id:'formPagination'}*/"> -->
+                <td>{{form.name}}</td>
+                <td>{{form.number}}</td>
+                <td>{{form.type}}</td>
+                <td>{{form.sequence}}</td>
+                <td>{{form.comment}}</td>
+                <td><a >View</a></td>
+                <td><a >Edit</a></td>
+                <td><a >Delete</a></td>
+            </tr>
+        
+    </table>
+</div>  

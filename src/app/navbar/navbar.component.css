@@ -1,0 +1,46 @@
+.navbar {
+    font-size: large;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center; /* Space evenly between the site name and site menu */
+    align-items: center; /* Center vertically */
+    background-color: #84d7f8;
+    /* padding: 10px; */
+    width: 100%;
+}
+
+.site-name {
+    display: flex;
+    align-items: center; /* Center vertically within site-name */
+    padding-left: 20px; /* Add some left padding to separate the image from the menu */
+}
+
+.site-menu {
+    text-align: center; /* Center-align the menu items horizontally */
+    padding: 0px;
+}
+.site-image{
+    margin-right:150px ;
+}
+ul {
+    list-style-type: none;
+
+}
+
+li {
+    display: inline;
+    margin-left: 10px; /* Add some spacing between menu items */
+}
+
+a {
+    text-decoration: none;
+    color: #212f3d;
+    
+    padding: 25px 10px;
+    margin: 20px;
+}
+
+.active {
+    /* Add your active link styles here */
+    background-color: #74c7e8 ;
+}
