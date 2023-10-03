@@ -5,7 +5,9 @@
     border-radius: 4px;
     align-items: right;
 }
-
+.head{
+    margin: 20px;
+}
 .form-div {
     margin: 20px;
     text-align: center;
@@ -15,12 +17,13 @@
 }
 
 .input-container {
-    display: flex;
+    display: block;
     align-items: center;
     margin: 5px 0;
 }
 .check-div{
     margin : 15px;
+    margin-right: 35px;
 }
 /* Style labels and input boxes */
 .label-div {
@@ -52,4 +55,10 @@ input[type="submit"] {
 
 input[type="submit"]:hover {
     background-color: #45a049;
+}
+
+.invalid{
+    margin: 5px;
+    display: block;
+    color: red;
 }

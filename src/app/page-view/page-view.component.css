@@ -1,0 +1,130 @@
+/* Center align the form */
+.container {
+    /* background-color: #a4f7f8; */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    align-items: right;
+    /* width:fit-content; */
+    max-width: 90%;
+}
+
+.form-div {
+    margin: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.data-container {
+    display: flex;
+    align-items: center;
+    margin: 5px 0;
+}
+.check-div{
+    margin-right: 20px;
+}
+/* Style labels and input boxes */
+.label-div {
+    font-weight: bold;
+    width: 120px; 
+    text-align: left;
+    padding-right: 10px;
+     /* Add some spacing between label and input */
+}
+.label-div-radio {
+    padding: 0px 10px;
+    margin: 5px;
+}
+.label-div-check{
+    
+    padding: 0px 10px;
+    margin: 5px;
+}
+.data-div {
+    flex-grow: 1; /* Take up available space in the container */
+    padding: 8px;
+    margin: 4px 0;
+    max-width: 100%; /* Allow the div to grow to the available width */
+    overflow: auto; /* Enable scrolling if content overflows */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    min-height: 35px;
+    white-space: pre-line; /* Preserve line breaks in text content */
+}
+.head{
+    margin: 20px;
+}
+/* Style the submit button */
+input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+/* Style the submit button */
+input[type="button"] {
+    
+    max-width: 150px;
+    background-color: #39a5db;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049;
+}
+input[type="button"]:hover {
+    background-color: #29779f;
+}
+input[type="radio"]{
+    margin-right: 8px;
+}
+input[type="reset"] {
+    
+    max-width: 150px;
+    background-color: #39a5db;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+input[type="reset"]:hover {
+    background-color: #29779f;
+}
+
+/* Table Divs */
+table,th,td,tr{
+    border: 1px solid white;
+    border-radius: 4px;
+}
+table{
+    margin: 10px;
+    padding: 1px;
+   
+    
+    /* justify-content: center; */
+}
+
+tr{
+    padding: auto;
+    background-color: #aad0e3;
+}
+th{
+    background-color: #29779f;
+}
+th,td{
+    
+    padding:2px  15px;
+    max-width: 400px;
+    
+}
+a{
+    color: black;
+}

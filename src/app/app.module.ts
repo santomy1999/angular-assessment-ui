@@ -14,7 +14,9 @@ import { PageEditComponent } from './page-edit/page-edit.component';
 import { PageViewComponent } from './page-view/page-view.component';
 import { PageSearchComponent } from './page-search/page-search.component';
 import { FormsModule } from '@angular/forms';
-import {HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
+import { ErrorComponent } from './error/error.component'
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -29,13 +31,15 @@ import {HttpClientModule } from '@angular/common/http'
     PageCreateComponent,
     PageEditComponent,
     PageViewComponent,
-    PageSearchComponent
+    PageSearchComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]
