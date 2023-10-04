@@ -70,7 +70,7 @@
                 <td><button class="btn btn-outline-info" style="color: black;" routerLink="/View-Page/{{form.id}}">View</button></td>
                 <td><button class="btn btn-outline-warning" style="color: black;" routerLink="/Update-Page/{{form.id}}">Edit</button></td>
                 <td><button class="btn btn-outline-danger" style="color: black;" routerLink="/Search-Page" (click)="deleteForm(form.id)">Delete</button></td>
-                <td><button class="btn btn-outline-primary" style="color: black;" routerLink="/Page-Maintenance/{{form.id}}">Action</button></td>
+                <td><a class="nav-link" style="color: black;" routerLink="/Page-Maintenance/{{form.id}}"><u>Access Page Task</u></a></td>
             </tr>
         </tbody>
     </table>
