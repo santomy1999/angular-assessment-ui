@@ -132,7 +132,7 @@ export class FormService {
       })
     );
   }
-  updateForm(newForm:Form):Observable<any>{
+  updateForm(id:string, newForm:Form):Observable<any>{
     return this.http.patch(this.editPatchUrl+newForm.id,newForm)
     .pipe(
       catchError((error: HttpErrorResponse) => {
@@ -162,6 +162,18 @@ export class FormService {
           return throwError('An error occurred:'+error);
         }
       })
+    );
+  }
+  loadTableNames(){
+    this.getTableNames().subscribe({
+      next:(res)=>{
+        this.tableNames=res
+        console.log(this.tableNames);
+      },
+      error: (err) => {
+        alert("Error in fetching Table Names:"+err)
+      }
+  } 
     );
   }
 }

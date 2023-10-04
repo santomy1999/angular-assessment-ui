@@ -47,31 +47,35 @@
     <table class="table" *ngIf='filteredForm && filteredForm.length >0'>
         <thead>
             <tr >
-                <th>Name</th>
-                <th>Number</th>
-                <th>Type</th>
-                <th>Form Type</th>
-                <th>Sequence</th>
-                <th>Comment</th>
-                <th>View Page</th>
-                <th>Edit Page</th>
-                <th>Delete Page</th>
+                <th scope="col">Name</th>
+                <th scope="col">Number</th>
+                <th scope="col">Type</th>
+                <!-- <th>Form Type</th> -->
+                <th scope="col">Sequence</th>
+                <th scope="col">Comment</th>
+                <th scope="col">View Page</th>
+                <th scope="col">Edit Page</th>
+                <th scope="col">Delete Page</th>
+                <th scope="col">Action Page</th>
             </tr>
         </thead>
-            <tr  *ngFor="let form of filteredForm | paginate:{ itemsPerPage :30, currentPage:page,totalItems:totalLength}">
+        <tbody>
+            <tr  *ngFor="let form of filteredForm | paginate:{ itemsPerPage :30, currentPage:page,totalItems:filteredForm.length}">
         <!-- </tr>/*| paginate:{itemsPerPage:50,currentPage:page,totalItems:totalLength,id:'formPagination'}*/"> -->
                 <td>{{form.name}}</td>
                 <td>{{form.number}}</td>
                 <td>{{form.type}}</td>
-                <td>{{form.formType}}</td>
                 <td>{{form.sequence}}</td>
                 <td>{{form.comment}}</td>
-                <td><button class="btn btn-info" routerLink="View-Page/{{form.id}}">View</button></td>
-                <td><button class="btn btn-warning" routerLink="/Update-Page/{{form.id}}">Edit</button></td>
-                <td><button class="btn btn-danger" routerLink="/Search-Page" (click)="deleteForm(form.id)">Delete</button></td>
+                <td><button class="btn btn-outline-info" style="color: black;" routerLink="/View-Page/{{form.id}}">View</button></td>
+                <td><button class="btn btn-outline-warning" style="color: black;" routerLink="/Update-Page/{{form.id}}">Edit</button></td>
+                <td><button class="btn btn-outline-danger" style="color: black;" routerLink="/Search-Page" (click)="deleteForm(form.id)">Delete</button></td>
+                <td><button class="btn btn-outline-primary" style="color: black;" routerLink="/Page-Maintenance/{{form.id}}">Action</button></td>
             </tr>
-        
+        </tbody>
     </table>
-    <pagination-controls (pageChange)="page = $event"></pagination-controls>
+    <div class="pagination center-content">
+        <pagination-controls (pageChange)="page = $event"></pagination-controls>
+    </div>
     </div>
 </div>  

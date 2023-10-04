@@ -1,5 +1,6 @@
 /* Center align the form */
 .container {
+    margin: 20px;
     border: 1px solid #ccc;
     border-radius: 4px;
     align-items: right;
@@ -49,6 +50,18 @@
 .btn {
     margin:0px 15px;
 }
+.table {
+    padding: 3px;
+}
+th, td {
+
+    border-bottom: 1px solid #ddd;
+  }
+  td{
+    max-width: 300px;
+    padding: 3px;
+    /* margin: 35px; */
+  }
 
 /*
 input[type="submit"] {

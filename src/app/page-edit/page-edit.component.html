@@ -1,132 +1,162 @@
 <div class="container">
+    <h2>Edit Form</h2>
+    <form #FormData="ngForm">
+      <div class="input-container">
+        <label class="label-div" for="name">Name*
+        </label>
+        <input type="text" class="input-div" id="name" name="name" 
+        [(ngModel)]="newForm.name" #name="ngModel" required 
+        [ngClass]="{'invalid-input': FormData.submitted && name.invalid}">
+        <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger"> Please Enter Valid Name </div>
+      </div>
+
+      <div class="input-container">
+        <label class="label-div" for="tableId">Table:*</label>
+        <select class="input-div" id="tableId" name="tableId" 
+        [(ngModel)]="newForm.tableId" #tableId="ngModel" required 
+        [ngClass]="{'invalid-input': FormData.submitted && tableId.invalid}">
+          <option *ngFor="let table of tableNames" [value]="table.id">{{ table.name}}</option>
+        </select>
+        <div *ngIf="tableId.invalid && (tableId.dirty || tableId.touched)" class="alert alert-danger"> Please select table </div>
+      </div>
+
+      <div class="input-container">
+        <label class="label-div" for="selectedDatatype">Type* </label>
+        <select class="input-div" id="selectedtype" name="type" aria-label="Default select example"
+         [(ngModel)]="newForm.type" #type="ngModel" required 
+         [ngClass]="{'invalid-input': FormData.submitted && type.invalid}">
+          <option default value="Details">Details</option>
+          <option value="Form">Form</option>
+          <option value="Summary">Summary</option>
+          <option value="Template">Template</option>
+          <option value="SingleDetail">SingleDetail</option>
+          <option value="MultiDetail">MultiDetail</option>
+          <option value="Comment">Comment</option>
+        </select>
+        <div *ngIf="type.invalid && (type.dirty || type.touched)" class="alert alert-danger"> Please select a type. </div>
+      </div>
+
+      <div class="input-container" *ngIf="newForm.type === 'Form'">
+        <label class="label-div" for="number">Form Number:*
+        </label>
+        <input type="text" class="input-div" id="number" name="number" 
+        [(ngModel)]="newForm.number" #number="ngModel">
+      </div>
+      <div class="input-container">
+        <label class="label-div" for="sequenceNumber">Sequence*
+        </label>
+        <input type="number" class="input-div" id="sequence" name="sequence" 
+        [(ngModel)]="newForm.sequence" #sequence="ngModel" required 
+        [ngClass]="{'invalid-input': FormData.submitted && sequence.invalid}">
+        <div *ngIf="sequence.invalid && (sequence.dirty || sequence.touched)" class="alert alert-danger"> Please enter a sequence number. </div>
+      </div>
+
+      <div class="input-container">
+        <label class="label-div" for="subsequenceNumber">Sub Sequence*
+        </label>
+        <input type="number" class="input-div" id="subSequence" name="subSequence" 
+        [(ngModel)]="newForm.subSequence" #subSequence="ngModel" required 
+        [ngClass]="{'invalid-input': FormData.submitted && subSequence.invalid}">
+        <div *ngIf="subSequence.invalid && (subSequence.dirty || subSequence.touched)" class="alert alert-danger"> Please enter a sub-sequence number. </div>
+      </div>
+
+      <div class="input-container" *ngIf="newForm.type === 'Form'">
+        <label class="label-div" for="formType">Form Type*
+        </label>
+        <select class="input-div" id="formType" name="formType" 
+        [(ngModel)]="newForm.formType" #formType="ngModel" required 
+        [ngClass]="{'invalid-input': FormData.submitted && formType.invalid}">
+          <option value="Conditional">Conditional</option>
+          <option value="Mandatory">Mandatory</option>
+          <option value="Optional">Optional</option>
+        </select>
+        <div *ngIf="formType.invalid && (formType.dirty || formType.touched)" class="alert alert-danger"> Please select a valid form type. </div>
+      </div>
+      
+      <div class="input-container" *ngIf="newForm.type === 'Form'">
+        <label class="label-div" for="hidePremium">Hide Premium</label>
+        <div>
+          <label>
+            <input type="radio" name="hidePremium" [(ngModel)]="newForm.hidePremium" value="1"> Yes </label>
+          <label>
+            <input type="radio" name="hidePremium" [(ngModel)]="newForm.hidePremium" value="0"> No </label>
+        </div>
+      </div>
+
+      <div class="input-container" *ngIf="newForm.type === 'Summary'">
+        <label class="label-div" for="condition">Condition</label>
+        <input type="text" class="input-div" id="condition" name="condition" 
+        [(ngModel)]="newForm.condition" #condition="ngModel">
+      </div>
+      <div class="input-container" *ngIf="newForm.type === 'Form'">
+        <label class="label-div" for="hidden">Hide Form</label>
+        <div>
+          <label>
+            <input type="radio" name="hidden" [(ngModel)]="newForm.hidden" value="1"> Yes </label>
+          <label>
+            <input type="radio" name="hidden" [(ngModel)]="newForm.hidden" value="0"> No </label>
+        </div>
+      </div>
+
+      <div class="input-container" *ngIf="newForm.type === 'Template'">
+        <label class="label-div" for="templateFile">Template url</label>
+        <input type="text" class="input-div" id="templateFile" name="templateFile" 
+        [(ngModel)]="newForm.templateFile" #templateFile="ngModel">
+      </div>
+      <div class="input-container" *ngIf="newForm.type === 'Summary'|| newForm.type === 'Template'|| newForm.type === 'SingleDetail'||newForm.type === 'MultiDetail'">
+        <label class="label-div" for="tabResourceName">Tab Resource Name</label>
+        <input type="text" class="input-div" id="tabResourceName" name="tabResourceName" [(ngModel)]="newForm.tabResourceName" #tabResourceName="ngModel">
+      </div>
+
+      <div class="input-container" *ngIf="newForm.type === 'Summary'|| newForm.type === 'Template'|| newForm.type === 'SingleDetail'||newForm.type === 'MultiDetail'">
+        <label class="label-div" for="tabCondition">Tab Resource Condition</label>
+        <input type="text" class="input-div" id="tabCondition" name="tabCondition" [(ngModel)]="newForm.tabCondition" #tabCondition="ngModel">
+      </div>
+
+      <div class="input-container" *ngIf="newForm.type !='Details'">
+        <label class="label-div" for="minOccurs">Minimum Occurs</label>
+        <input type="number" class="input-div" id="minOccurs" name="minOccurs" [(ngModel)]="newForm.minOccurs" #minOccurs="ngModel">
+      </div>
+
+      <div class="input-container" *ngIf="newForm.type !== 'Details' && newForm.minOccurs > 0">
+        <label class="label-div" for="maxOccurs">Maximum Occurs</label>
+        <input type="number" class="input-div" id="maxOccurs" name="maxOccurs" 
+        [(ngModel)]="newForm.maxOccurs" #maxOccurs="ngModel" [min]="newForm.minOccurs" required 
+        [ngClass]="{'invalid-input': FormData.submitted && maxOccurs.invalid}">
+        <div *ngIf="newForm.maxOccurs < newForm.minOccurs" class="error-message"> Maximum Occurs must be greater than or equal to Minimum Occurs. </div>
+      </div>
+
+      <div class="input-container">
+        <label class="label-div" for="comment">Comment</label>
+        <textarea class="input-div" id="comment" name="comment" [(ngModel)]="newForm.comment"></textarea>
+      </div>
+
+      <div class="input-container">
+        <label class="label-div" for="helpText">Help Text</label>
+        <textarea class="input-div" id="helpText" name="helpText" [(ngModel)]="newForm.helpText"></textarea>
+      </div>
+
+      <div class="input-container">
+        <label class="label-div" for="scriptBefore">Script Before</label>
+        <textarea class="input-div" id="scriptBefore" name="scriptBefore" [(ngModel)]="newForm.scriptBefore"></textarea>
+      </div>
+
+      <div class="input-container">
+        <label class="label-div" for="scriptAfter">Script After</label>
+        <textarea class="input-div" id="scriptAfter" name="scriptAfter" [(ngModel)]="newForm.scriptAfter"></textarea>
+      </div>
+      
+    <div class="row" >
+
+        <div class="col col-sm-4 text-center "></div>
+          <div class="col col-sm-2 text-center ">
+            <button class="btn  btn-outline-secondary my-2" routerLink="../">&lt;- Back</button>
+          </div>
+          <div class="col col-sm-2 text-center " >
+            <button type="submit" class="btn  btn-primary" (click)="updateForm()">
+              <i class="bi bi-pencil-fill"></i>Update </button>
+          </div>
+        </div>
+    </form>
     
-    <div class="form-div">
-        <div class="input-container">
-            <h2 class="head"> Create form</h2>
-            </div>
-        <form  #updateForm="ngForm" >
-            <div class="input-container">
-                <label class="label-div" for="Name">Name</label>
-                <input class="input-div" type="text" id="Name" name="Name" required ngModel #name="ngModel">
-                <div *ngIf="name.invalid && (name.touched||updateForm.submitted)" class="invalid"> Name is required</div>
-            </div>
-
-            <div class="input-container">
-                <label class="label-div" for="TableName">Table Name</label>
-                <!-- <input class="input-div" type="text" id="TableName" name="TableName">   -->
-                <select class="input-div" for="TableName" name="Table" required  [(ngModel)]="newform.tableName" #tablename="ngModel">
-                    <option value="" disabled selected>--Select an table--</option>
-                    <option *ngFor="let table of tableNames" value="{{table.id}}">{{table.name}}</option>
-                </select>
-                <div *ngIf="tablename.invalid && (tablename.dirty || tablename.touched||updateForm.submitted) " class="invalid">Table name is required</div>
-            </div>
-
-            
-            <div class="input-container">
-                <label class="label-div" for="Type">Type</label>
-                <select class="input-div" id="Type" name="Type"  required ngModel #type="ngModel">
-                    <option value="" disabled selected>--Select an option--</option>
-                    <option value="Detail" >Detail</option>
-                    <option value="Form">Form</option>
-                    <option value="Summary">Summary</option>
-                </select>  
-                <div *ngIf="type.invalid &&( type.touched||updateForm.submitted)" class="invalid">Type is required</div>
-            </div>
-            <div *ngIf="type.value=='Form'" class="input-container">
-                <label class="label-div" for="Number">Form Number</label>
-                <input class="input-div" type="text" id="Number" name="Number" required ngModel #number="ngModel">  
-                <div *ngIf="number.invalid &&( number.touched||updateForm.submitted)" class="invalid">Number is required</div>
-            </div>
-           
-           
-            <div  *ngIf="type.value=='Form'" class="input-container">
-                <label class="label-div" for="FormType">Form Type</label>
-                <select  class="input-div" id="FormType" name="FormType" required ngModel #formtype="ngModel">
-                    <option value="" disabled selected>--Select an option--</option>
-                    <option value="Conditional">Conditional</option>
-                    <option value="Mandatory">Mandatory</option>
-                    <option value="Optional">Optional</option>
-                </select>  
-                <div *ngIf="formtype.invalid && (formtype.touched||updateForm.submitted)" class="invalid">Form Type is required for type 'Form' </div>
-            </div>
-
-            <div class="input-container">
-                <label class="label-div" for="Sequence">Sequence</label>
-                <input class="input-div" type="number" id="Sequence" name="Sequence" ngModel>
-            </div>
-            
-            <div class="input-container">
-                <label class="label-div" for="SubSequence">Sub Sequence</label>
-                <input class="input-div" type="number" id="SubSequence" name="SubSequence" ngModel>  
-            </div>
-            
-
-          
-
-            <div class="input-container">
-                <label class="label-div" for="HidePremium">Hide Premium</label>
-                <input class="check-div" type="checkbox" id="HidePremium" name="HidePremium" ngModel>  
-            
-                
-                <label class="label-div" for="HideForm"> Hide Form:</label>
-                <input class="check-div" type="checkbox" id="HideForm" name="HideForm" ngModel>  
-            </div>
-            
-
-
-            <div class="input-container">
-                <label class="label-div" for="Template File">Template File</label>
-                <input class="input-div"  type="text" id="TemplateFile" name="TemplateFile" ngModel>  
-            </div>
-
-            <div class="input-container">
-                <label class="label-div" for="Condition">Condition</label>
-                <input class="input-div"  type="text" id="Condition" name="Condition" ngModel>  
-            </div>
-
-            <div class="input-container">
-                <label class="label-div" for="Tab Condition">Tab Condition</label>
-                <input class="input-div"  type="text" id="TabCondition" name="TabCondition" ngModel>  
-            </div>
-
-            <div class="input-container">
-                <label class="label-div" for="TabResource">Tab Resource</label>
-                <input class="input-div"  type="text" id="TabResource" name="TabResource" ngModel>  
-            </div>
-
-            <div class="input-container">
-                <label class="label-div" for="MinimumOccurs">Minimum Occurs</label>
-                <input class="input-div" type="number" id="MinimumOccurs" name="MinimumOccurs" ngModel>  
-            </div>
-
-            <div class="input-container">
-                <label class="label-div" for="MaximumOccurs">Maximum Occurs</label>
-                <input class="input-div" type="number" id="MaximumOccurs" name="MaximumOccurs" ngModel>  
-            </div>
-
-            <div class="input-container">
-                <label class="label-div" for="Comment">Comment</label>
-                <!-- <input class="input-div" type="text" id="Comment" name="Comment">   -->
-                <textarea class="input-div " name ="Comment" ngModel></textarea>
-            </div>
-
-            <div class="input-container">
-                <label class="label-div" for="HelpText">Help Text</label>
-                <input class="input-div" type="text" id="HelpText" name="HelpText" ngModel>  
-            </div>
-
-            <div class="input-container">
-                <label class="label-div" for="ScriptBefore">Script Before</label>
-                <input class="input-div" type="text" id="ScriptBefore" name="ScriptBefore" ngModel>  
-            </div>
-
-            <div class="input-container">
-                <label class="label-div" for="ScriptAfter">Script After</label>
-                <input class="input-div" type="text" id="ScriptAfter" name="ScriptAfter" ngModel>  
-            </div>
-            <div class="input-container">
-            <input class="input-button" type="submit" value="Submit">
-            </div>
-        </form>
-    </div>
-</div>
+  </div>

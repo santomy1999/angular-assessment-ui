@@ -9,12 +9,14 @@ import { PageSearchComponent } from './page-search/page-search.component';
 import { PageEditComponent } from './page-edit/page-edit.component';
 import { ErrorComponent } from './error/error.component';
 import { PageViewComponent } from './page-view/page-view.component';
+import { PagFieldMaintanenceComponent } from './pag-field-maintanence/pag-field-maintanence.component';
 
 const routes: Routes = [
   {path:'',component:PageSearchComponent},
   {path:'View-Page/:id',component:PageViewComponent},
   {path:'Search-Page',component:PageSearchComponent},
   {path:'Create-Page',component:PageCreateComponent},
+  {path:'Page-Maintenance/:id',component:PagFieldMaintanenceComponent},
   {path:'Search-Page',children:[
     {path:'View-Page/:id',component:PageViewComponent}]},
   {path:'Update-Page',component:PageSearchComponent},

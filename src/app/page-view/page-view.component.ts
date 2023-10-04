@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Form } from '../Models/form';
 import { FormService } from '../Services/form.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-page-view',
@@ -59,10 +59,11 @@ export class PageViewComponent implements OnInit{
   result:any
   tableNames: any
   table :any
-  constructor(private formService :FormService,private activatedRoute:ActivatedRoute){
+  constructor(private formService :FormService,private activatedRoute:ActivatedRoute,private router:Router){
     
   }
 ngOnInit(): void {
+  window.scrollTo(0, 0)
   this.formId = this.activatedRoute.snapshot.paramMap.get('id');
   this.getForm()
   
@@ -95,5 +96,17 @@ getTableName(){
     );
     
 }
+}
+deleteForm(id:string){
+  this.formService.deleteForm(id).subscribe({
+    next:(res)=>{
+      console.log(res)
+      alert("Page Deleted Successfully\n Form Name:"+res.name)
+      this.router.navigate(['Search-Page'])
+    },
+    error:(err)=>{
+      alert("Error:"+err)
+    }
+  });
 }
 }

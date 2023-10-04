@@ -1,5 +1,6 @@
 /* Center align the form */
 .container {
+    margin: 20px;
     /* background-color: #a4f7f8; */
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -127,4 +128,7 @@ th,td{
 }
 a{
     color: black;
+}
+.btn{
+    margin: 10px;
 }

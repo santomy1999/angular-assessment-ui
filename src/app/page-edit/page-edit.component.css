@@ -1,5 +1,6 @@
 /* Center align the form */
 .container {
+    margin: 20px;
     /* background-color: #a4f7f8; */
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -54,4 +55,8 @@ input[type="submit"] {
 
 input[type="submit"]:hover {
     background-color: #45a049;
+}
+.btn{
+    margin: 10px;
+    margin-bottom: 50px;
 }

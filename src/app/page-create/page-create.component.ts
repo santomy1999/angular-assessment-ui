@@ -10,8 +10,9 @@ import { Router } from '@angular/router';
   templateUrl: './page-create.component.html',
   styleUrls: ['./page-create.component.css']
 })
-export class PageCreateComponent {
 
+export class PageCreateComponent {
+  // form:any
   @ViewChild('createPage') form :NgForm | undefined;
   newForm :Form ={
     id: '00000000-0000-0000-0000-000000000000',
@@ -70,6 +71,20 @@ export class PageCreateComponent {
 
   }
   
+  ngOnInit(): void {
+    window.scrollTo(0, 0)
+    this.formService.getTableNames().subscribe({
+      next:(res)=>{
+        this.tableNames=res
+        console.log(this.tableNames);
+      },
+      error: (err) => {
+        alert("Error in fetching Table Names:"+err)
+      }
+  } 
+    );
+    
+  }
   enableFormType(){
     
     if(this.form?.value=='Form'){
@@ -133,18 +148,6 @@ export class PageCreateComponent {
   }
 //   formTypeValidation(){
 //   }
-  ngOnInit(): void {
-    this.formService.getTableNames().subscribe({
-      next:(res)=>{
-        this.tableNames=res
-        console.log(this.tableNames);
-      },
-      error: (err) => {
-        alert("Error in fetching Table Names:"+err)
-      }
-  } 
-    );
-    
-  }
+  
 }
 

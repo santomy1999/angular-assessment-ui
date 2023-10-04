@@ -14,10 +14,10 @@ export class PageSearchComponent implements OnInit{
 
 
 
-  filteredForm:Form[]=[];
+  filteredForm:any;
   searchValue:string='';
-  page:number=1
 
+  page:number=1
   lengthofData = 0;
   totalLength: number = 0;
 
@@ -27,6 +27,10 @@ export class PageSearchComponent implements OnInit{
 
   searchBy:string='name';
   
+  ngOnInit(): void {
+    window.scrollTo(0, 0)
+    // this.onSearch();
+  }
   
 
   filterForm() {
@@ -35,11 +39,13 @@ export class PageSearchComponent implements OnInit{
         item => (item.type === 'Detail' && this.detailCheckBox) || 
         (item.type === 'Form' && this.formCheckBox) ||
         (item.type === 'Summary' && this.summaryCheckBox));
+       
       console.log(this.filteredForm);
     }
     else {
       this.filteredForm=this.formService.searchResultForm;
     }
+    this.page=1
   }
   
 
@@ -56,7 +62,7 @@ export class PageSearchComponent implements OnInit{
     this.searchValue='';
   }
   onSearch(){
-    console.log(this.searchBy)
+    // console.log(this.searchBy)
     // validate the data
     this.searchValue=this.searchValue.trim();
     if(this.searchValue==''){
@@ -117,7 +123,5 @@ export class PageSearchComponent implements OnInit{
         }
       });
   }
-  ngOnInit(): void {
-    this.onSearch();
-  }
+  
 }

@@ -17,6 +17,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ErrorComponent } from './error/error.component'
 import { NgxPaginationModule } from 'ngx-pagination';
+import { PagFieldMaintanenceComponent } from './pag-field-maintanence/pag-field-maintanence.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { NgxPaginationModule } from 'ngx-pagination';
     PageEditComponent,
     PageViewComponent,
     PageSearchComponent,
-    ErrorComponent
+    ErrorComponent,
+    PagFieldMaintanenceComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

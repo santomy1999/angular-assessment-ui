@@ -1,26 +1,24 @@
 <div class="container">
-    
-    <div class="form-div">
-        <div class="input-container">
-            <h2 class="head"> Create form</h2>
-            </div>
-        <form (ngSubmit)="onPageSubmit()" #createPage="ngForm" >
+    <h2> Create form</h2>
+        
+        <form  #createPage="ngForm" (ngSubmit)="onPageSubmit()" >
             <div class="input-container">
-                <label class="label-div" for="Name">Name</label>
+                <label class="label-div" for="Name">Name*</label>
                 <input class="input-div" type="text" id="Name" name="Name" required ngModel #name="ngModel">
-                <div *ngIf="name.invalid && (name.touched||createPage.submitted)" class="invalid"> Name is required</div>
+                
             </div>
+            <div *ngIf="name.invalid && (name.touched||createPage.submitted)" class="alert alert-danger"> Name is required</div>
 
             <div class="input-container">
-                <label class="label-div" for="TableName">Table Name</label>
+                <label class="label-div" for="TableName">Table Name*</label>
                 <!-- <input class="input-div" type="text" id="TableName" name="TableName">   -->
                 <select class="input-div" for="TableName" name="Table" required  ngModel #tablename="ngModel">
                     <option value="" disabled selected>--Select an table--</option>
                     <option *ngFor="let table of tableNames" value="{{table.id}}">{{table.name}}</option>
                 </select>
-                <div *ngIf="tablename.invalid && (tablename.dirty || tablename.touched||createPage.submitted) " class="invalid">Table name is required</div>
+                
             </div>
-
+            <div *ngIf="tablename.invalid && (tablename.dirty || tablename.touched||createPage.submitted) " class="alert alert-danger">Table name is required</div>
             
             <div class="input-container">
                 <label class="label-div" for="Type">Type</label>
@@ -30,24 +28,32 @@
                     <option value="Form">Form</option>
                     <option value="Summary">Summary</option>
                 </select>  
-                <div *ngIf="type.invalid &&( type.touched||createPage.submitted)" class="invalid">Type is required</div>
+               
             </div>
-            <div *ngIf="type.value=='Form'" class="input-container">
+            <div *ngIf="type.invalid &&( type.touched||createPage.submitted)" class="alert alert-danger">Type is required</div>
+
+            <div *ngIf="type.value=='Form'" >
+                <div class="input-container">
                 <label class="label-div" for="Number">Form Number</label>
                 <input class="input-div" type="text" id="Number" name="Number" required ngModel #number="ngModel">  
-                <div *ngIf="number.invalid &&( number.touched||createPage.submitted)" class="invalid">Number is required</div>
+                
+            </div>
+            <div  *ngIf="number.invalid &&( number.touched||createPage.submitted)" class="alert alert-danger">Number is required</div>
             </div>
            
            
-            <div  *ngIf="type.value=='Form'" class="input-container">
+            <div  *ngIf="type.value=='Form'">
+
+            <div class="input-container">
                 <label class="label-div" for="FormType">Form Type</label>
                 <select  class="input-div" id="FormType" name="FormType" required ngModel #formtype="ngModel">
                     <option value="" disabled selected>--Select an option--</option>
                     <option value="Conditional">Conditional</option>
                     <option value="Mandatory">Mandatory</option>
                     <option value="Optional">Optional</option>
-                </select>  
-                <div *ngIf="formtype.invalid && (formtype.touched||createPage.submitted)" class="invalid">Form Type is required for type 'Form' </div>
+                </select> 
+            </div> 
+                <div *ngIf="formtype.invalid && (formtype.touched||createPage.submitted)" class="alert alert-danger">Form Type is required for type 'Form' </div>
             </div>
 
             <div class="input-container">
@@ -125,8 +131,7 @@
                 <input class="input-div" type="text" id="ScriptAfter" name="ScriptAfter" ngModel>  
             </div>
             <div class="input-container">
-            <input class="input-button" type="submit" value="Submit">
+            <input class="btn btn-lg btn-primary"  type="submit" value="Submit">
             </div>
         </form>
-    </div>
 </div>
