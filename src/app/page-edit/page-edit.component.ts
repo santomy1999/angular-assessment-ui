@@ -104,7 +104,7 @@ export class PageEditComponent implements OnInit{
 
   
 
-      this.formService.updateForm(this.newForm.id,this.newForm).subscribe
+      this.formService.updateForm(this.newForm).subscribe
       ({
       next:(r)=>{
       

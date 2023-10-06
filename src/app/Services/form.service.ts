@@ -3,6 +3,7 @@ import { HttpClient,HttpErrorResponse  } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Form } from '../Models/form';
+import { Urls } from './environment/url.environment';
 
 @Injectable({
   providedIn: 'root'
@@ -13,30 +14,30 @@ export class FormService {
   tableNames: any =[];
   searchResultForm: Form[] =[];
   
-  // getUrls
-  getTableNamesUrl='https://localhost:7106/api/Table/tableNames';
-  getTableByIdUrl ='https://localhost:7106/api/Table/table/'
-  getFormsByNameUrl = 'https://localhost:7106/api/Form/FormName:';
-  getFormsByNumberUrl = 'https://localhost:7106/api/Form/FormNumber:';
-  getAllFormsrUrl = 'https://localhost:7106/api/Form/FormsAll';
-  getFormByIdUrl= 'https://localhost:7106/api/Form/formId:'
+  // // getUrls
+  // getTableNamesUrl='https://localhost:7106/api/Table/tableNames';
+  // getTableByIdUrl ='https://localhost:7106/api/Table/table/'
+  // getFormsByNameUrl = 'https://localhost:7106/api/Form/FormName:';
+  // getFormsByNumberUrl = 'https://localhost:7106/api/Form/FormNumber:';
+  // getAllFormsrUrl = 'https://localhost:7106/api/Form/FormsAll';
+  // getFormByIdUrl= 'https://localhost:7106/api/Form/formId:'
 
-  // posturls
-  addFormUrl = 'https://localhost:7106/api/Form/Form'
+  // // posturls
+  // addFormUrl = 'https://localhost:7106/api/Form/Form'
 
-  //updateurls
-  editPatchUrl = 'https://localhost:7106/api/Form/FormId:'
+  // //updateurls
+  // editPatchUrl = 'https://localhost:7106/api/Form/Form'
 
-  //deleteUrls
-  deleteFormUrl = 'https://localhost:7106/api/Form/FormNumber:';
+  // //deleteUrls
+  // deleteFormUrl = 'https://localhost:7106/api/Form/FormNumber:';
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient,private urls: Urls) { }
 
   getTableNames(){
-    return this.http.get(this.getTableNamesUrl);
+    return this.http.get(this.urls.getTableNamesUrl);
   }
   getTableById(id:string):Observable<any>{
-    return this.http.get(this.getTableByIdUrl + id)
+    return this.http.get(this.urls.getTableByIdUrl + id)
       .pipe(
         catchError((error: HttpErrorResponse) => {
           if (error.status === 404) {
@@ -53,7 +54,7 @@ export class FormService {
   }
   
   getAllForms(): Observable<any> {
-    return this.http.get(this.getAllFormsrUrl)
+    return this.http.get(this.urls.getAllFormsrUrl)
       .pipe(
         catchError((error: HttpErrorResponse) => {
           if (error.status === 404) {
@@ -69,7 +70,7 @@ export class FormService {
       );
   }
   getFormById(id:string):Observable<any>{
-    return this.http.get(this.getFormByIdUrl + id)
+    return this.http.get(this.urls.getFormByIdUrl + id)
       .pipe(
         catchError((error: HttpErrorResponse) => {
           if (error.status === 404) {
@@ -85,7 +86,7 @@ export class FormService {
       );
   }
   getFormsByName(name: string): Observable<any> {
-    return this.http.get(this.getFormsByNameUrl + name)
+    return this.http.get(this.urls.getFormsByNameUrl + name)
       .pipe(
         catchError((error: HttpErrorResponse) => {
           if (error.status === 404) {
@@ -101,7 +102,7 @@ export class FormService {
       );
   }
   getFormsByNumber(number: string): Observable<any> {
-    return this.http.get(this.getFormsByNumberUrl + number)
+    return this.http.get(this.urls.getFormsByNumberUrl + number)
       .pipe(
         catchError((error: HttpErrorResponse) => {
           if (error.status === 404) {
@@ -117,13 +118,13 @@ export class FormService {
       );
   }
   createForm(form : Form): Observable<any> {
-    return this.http.post(this.addFormUrl,form)
+    return this.http.post(this.urls.addFormUrl,form)
     .pipe(
       catchError((error: HttpErrorResponse) => {
         if (error.status === 404) {
           // Handle the 404 error here, for example:
-          console.error('Form Not Found', error);
-          return throwError('NoFormsFound');
+          console.error('Error adding form', error);
+          return throwError('BadRequestError');
         } else {
           // Handle other errors here
           console.error('An error occurred:', error);
@@ -132,8 +133,8 @@ export class FormService {
       })
     );
   }
-  updateForm(id:string, newForm:Form):Observable<any>{
-    return this.http.patch(this.editPatchUrl+newForm.id,newForm)
+  updateForm(newForm:Form):Observable<any>{
+    return this.http.patch(this.urls.editPatchUrl,newForm)
     .pipe(
       catchError((error: HttpErrorResponse) => {
         if (error.status === 404) {
@@ -149,7 +150,7 @@ export class FormService {
     );
   }
   deleteForm(id:string):Observable<any>{
-    return this.http.delete(this.deleteFormUrl+id)
+    return this.http.delete(this.urls.deleteFormUrl+id)
     .pipe(
       catchError((error: HttpErrorResponse) => {
         if (error.status === 404) {

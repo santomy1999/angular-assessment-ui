@@ -1,5 +1,6 @@
 /* Center align the form */
 .container {
+    min-height: 80vh;
     margin: 20px;
     /* background-color: #a4f7f8; */
     border: 1px solid #ccc;
@@ -48,7 +49,7 @@
     margin: 4px 0;
     max-width: 100%; /* Allow the div to grow to the available width */
     overflow: auto; /* Enable scrolling if content overflows */
-    border: 1px solid #ccc;
+    /* border: 1px solid #ccc; */
     border-radius: 4px;
     min-height: 35px;
     white-space: pre-line; /* Preserve line breaks in text content */

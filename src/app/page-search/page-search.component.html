@@ -1,49 +1,65 @@
 <div class="container">
     <div class="form-div">
+
         <form (ngSubmit)="onSearch()" #searchPage="ngForm" >
-            <div class="input-container">
-                <label class="label-div" for="search">Search Page</label>
-                <input class="input-div" type="text" name="search" id="search" [(ngModel)]="searchValue" >
-            </div>
-            <div class="input-container">
-                <label class="label-div-radio" for="name">
-                    Search By Name
-                </label>
-                <input type="radio"  name="searchBy" value="name" id="name" [(ngModel)]="searchBy">
-                <label class="label-div-radio" for="number">
-                    Search By Number
-                </label>
-                <input type="radio" name="searchBy" value="number" id="number" [(ngModel)]="searchBy" >
-                <br><br>
-                <input type="button" class="btn btn-primary" value="Reset" (click)="onReset()">
-            </div>
-            <div class="input-container">
-                <label class="label-div-check" for="detail">
-                     Detail
-                </label>
-                <input type="checkbox" class="check-div" name="formType" value="detail" id="detail" [(ngModel)]="detailCheckBox">
-                <label class="label-div-check" for="form">
-                    Form
-               </label>
-                <input type="checkbox" class="check-div" name="formType" value="form" id="form"  [(ngModel)]="formCheckBox">
-                <label class="label-div-check" for="summary">
-                    Summary
-               </label>
-                <input type="checkbox" class="check-div" name="formType" value="summary" id="summary"  [(ngModel)]="summaryCheckBox">
-            
-               
-                <input type="button" class="btn btn-primary" value="Select All" (click)="selectAll()">
+            <div class="row">
+                <div class="input-container">
+                    <label class="label-div" for="search">Search Page</label>
+                    <input class="input-div" type="text" name="search" id="search" [(ngModel)]="searchValue" >
+                </div>
             </div>
 
-            <div class="input-container">
+            <div class="row">
+                <div class="input-container">
+                    <label class="label-div-radio" for="name">
+                        Search By Name
+                    </label>
+                    <input type="radio"  name="searchBy" value="name" id="name" [(ngModel)]="searchBy">
+                    <label class="label-div-radio" for="number">
+                        Search By Number
+                    </label>
+                    <input type="radio" name="searchBy" value="number" id="number" [(ngModel)]="searchBy" >
+                    <br><br>
+                    
+                    <input type="button" class="btn btn-primary" value="Select All" (click)="selectAll()">
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-container">
+                    <b>Type:</b>
+                    <label class="label-div-check" for="detail">
+                        Detail
+                    </label>
+                    <input type="checkbox" class="check-div" name="formType" value="detail" id="detail" [(ngModel)]="detailCheckBox">
+                    <label class="label-div-check" for="form">
+                        Form
+                </label>
+                    <input type="checkbox" class="check-div" name="formType" value="form" id="form"  [(ngModel)]="formCheckBox">
+                    <label class="label-div-check" for="summary">
+                        Summary
+                </label>
+                    <input type="checkbox" class="check-div" name="formType" value="summary" id="summary"  [(ngModel)]="summaryCheckBox">
+                    <input type="button" class="btn btn-primary" value="Reset" (click)="onReset()">
+                </div>
+                
+            </div>
+            <!-- <div class="row">
+                <div class="col-12">
+                    
+                </div>
+            </div> -->
+            <div class="row">
+                <div class="col-6">
                 <input class="btn btn-success" type="submit" value="Search">
-            </div>
-            
-            
-
+                </div>
+                <div class="col-6">
+                <button class="btn btn-warning" routerLink="/Create-Page">Create Page</button>
+                </div>
+        </div>
         </form>
     </div>
-    <div class="table-responsive">
+    <div  class="table-responsive">
+        
     <table class="table" *ngIf='filteredForm && filteredForm.length >0'>
         <thead>
             <tr >
@@ -53,29 +69,40 @@
                 <!-- <th>Form Type</th> -->
                 <th scope="col">Sequence</th>
                 <th scope="col">Comment</th>
+                
+                <th scope="col"> </th>
+                <th scope="col">Action</th>
+<!-- 
                 <th scope="col">View Page</th>
                 <th scope="col">Edit Page</th>
                 <th scope="col">Delete Page</th>
-                <th scope="col">Action Page</th>
+                <th scope="col">Action Page</th> -->
             </tr>
         </thead>
-        <tbody>
-            <tr  *ngFor="let form of filteredForm | paginate:{ itemsPerPage :30, currentPage:page,totalItems:filteredForm.length}">
+        <tbody >
+            
+            <tr  *ngFor="let form of filteredForm | paginate:{ itemsPerPage :10, currentPage:page,totalItems:filteredForm.length} " id="pagination">
         <!-- </tr>/*| paginate:{itemsPerPage:50,currentPage:page,totalItems:totalLength,id:'formPagination'}*/"> -->
                 <td>{{form.name}}</td>
                 <td>{{form.number}}</td>
                 <td>{{form.type}}</td>
                 <td>{{form.sequence}}</td>
                 <td>{{form.comment}}</td>
-                <td><button class="btn btn-outline-info" style="color: black;" routerLink="/View-Page/{{form.id}}">View</button></td>
-                <td><button class="btn btn-outline-warning" style="color: black;" routerLink="/Update-Page/{{form.id}}">Edit</button></td>
-                <td><button class="btn btn-outline-danger" style="color: black;" routerLink="/Search-Page" (click)="deleteForm(form.id)">Delete</button></td>
+
                 <td><a class="nav-link" style="color: black;" routerLink="/Page-Maintenance/{{form.id}}"><u>Access Page Task</u></a></td>
+                
+                <td>
+                    <button class="btn btn-outline-info" style="color: black;" routerLink="/View-Page/{{form.id}}">View</button>
+                <button class="btn btn-outline-warning" style="color: black;" routerLink="/Update-Page/{{form.id}}">Edit</button>
+                <button class="btn btn-outline-danger" style="color: black;" routerLink="/Search-Page" (click)="deleteForm(form.id)">Delete</button></td>
+           
+                <!-- <td><button class="btn btn-outline-info" style="color: black;" routerLink="/View-Page/{{form.id}}">View</button></td>
+                <td><button class="btn btn-outline-warning" style="color: black;" routerLink="/Update-Page/{{form.id}}">Edit</button></td>
+                <td><button class="btn btn-outline-danger" style="color: black;" routerLink="/Search-Page" (click)="deleteForm(form.id)">Delete</button></td> -->     
             </tr>
         </tbody>
+        
     </table>
-    <div class="pagination center-content">
-        <pagination-controls (pageChange)="page = $event"></pagination-controls>
-    </div>
+        <pagination-controls *ngIf="filteredForm.length>0" (pageChange)="page = $event"></pagination-controls>
     </div>
 </div>  

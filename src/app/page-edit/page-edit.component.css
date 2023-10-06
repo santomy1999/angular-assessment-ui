@@ -1,5 +1,6 @@
 /* Center align the form */
 .container {
+    min-height: 80vh;
     margin: 20px;
     /* background-color: #a4f7f8; */
     border: 1px solid #ccc;

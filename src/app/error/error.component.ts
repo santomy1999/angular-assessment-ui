@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./error.component.css']
 })
 export class ErrorComponent {
-
+selectAll(){}
 }

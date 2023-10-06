@@ -29,7 +29,7 @@ export class PageSearchComponent implements OnInit{
   
   ngOnInit(): void {
     window.scrollTo(0, 0)
-    // this.onSearch();
+    this.onSearch();
   }
   
 
@@ -64,6 +64,7 @@ export class PageSearchComponent implements OnInit{
   onSearch(){
     // console.log(this.searchBy)
     // validate the data
+    window.scrollTo(400, 400) //bring page to the table
     this.searchValue=this.searchValue.trim();
     if(this.searchValue==''){
       this.formService.getAllForms().subscribe({
@@ -89,7 +90,8 @@ export class PageSearchComponent implements OnInit{
                   // alert("Error in fetching Table Names:"+res)
                 },
                 error: (err) => {
-                  alert("Error in fetching forms:"+err)
+                  alert("No forms found")
+                  this.filteredForm = {}
                 }
               })
     }
@@ -103,7 +105,7 @@ export class PageSearchComponent implements OnInit{
             this.filterForm();
             },
             error: (err) => {
-              alert("Error:"+err)
+              alert("No forms found")
               }
         })
     }
@@ -111,17 +113,18 @@ export class PageSearchComponent implements OnInit{
     // this.filteredForm=this.formService.searchResultForm;
   }
   deleteForm(id:string){
+    if(confirm("Are you sure you want to permenantly delete this form? ")){
       this.formService.deleteForm(id).subscribe({
-        next:(res)=>{
-          console.log(res)
+        next:(res)=>{  
+            // console.log(res)
           alert("Page Deleted Successfully\n Form Name:"+res.name)
-          this.searchValue=''
           this.onSearch()
         },
         error:(err)=>{
           alert("Error:"+err)
         }
       });
+    }
   }
   
 }

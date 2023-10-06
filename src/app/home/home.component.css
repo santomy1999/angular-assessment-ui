@@ -1,4 +1,5 @@
 .container{
+    min-height: 80vh;
     margin: 20px;
     background-color: #c4e7f5;
     padding: 20px;

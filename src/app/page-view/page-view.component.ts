@@ -98,15 +98,17 @@ getTableName(){
 }
 }
 deleteForm(id:string){
-  this.formService.deleteForm(id).subscribe({
-    next:(res)=>{
-      console.log(res)
-      alert("Page Deleted Successfully\n Form Name:"+res.name)
-      this.router.navigate(['Search-Page'])
-    },
-    error:(err)=>{
-      alert("Error:"+err)
-    }
-  });
+  if(confirm("Are you sure you want to permenantly delete this form? ")){
+    this.formService.deleteForm(id).subscribe({
+      next:(res)=>{
+        console.log(res)
+        alert("Page Deleted Successfully\n Form Name:"+res.name)
+        this.router.navigate(['Search-Page'])
+      },
+      error:(err)=>{
+        alert("Error:"+err)
+      }
+    });
+  }
 }
 }
