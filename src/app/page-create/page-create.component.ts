@@ -16,19 +16,19 @@ export class PageCreateComponent {
   @ViewChild('createPage') form :NgForm | undefined;
   newForm :Form ={
     id: '00000000-0000-0000-0000-000000000000',
-    name: null,
-    number: null,
-    comment: null,
-    condition: null,
+    name: '',
+    number: '',
+    comment: '',
+    condition: '',
     sequence: 0,
     subSequence: 0,
-    tabCondition: null,
-    tabResourceName: null,
-    helpText: null,
+    tabCondition: '',
+    tabResourceName: '',
+    helpText: '',
     hidden: 0,
     hidePremium: 0,
-    type: null,
-    formType:null,
+    type: '',
+    formType:'',
     scriptBefore:null,
     scriptAfter:null,
     maxOccurs: 0,
@@ -76,7 +76,7 @@ export class PageCreateComponent {
     this.formService.getTableNames().subscribe({
       next:(res)=>{
         this.tableNames=res
-        console.log(this.tableNames);
+        //console.log(this.tableNames);
       },
       error: (err) => {
         alert("Error in fetching Table Names:"+err)
@@ -125,7 +125,7 @@ export class PageCreateComponent {
     else this.newForm.hidden = 0
     
 
-    console.log(this.newForm);
+    //console.log(this.newForm);
     this.sendPostRequest();
     }
     else{

@@ -1,15 +1,14 @@
-
 <div class="container">
     <h2 class="head">
         Page Details
     </h2>
-    <div class="data-container">
+    <div class="data-container" *ngIf="form.name!=''">
         <div class="label-div">
             Form Name :
         </div>
         <div class="data-div">
-            {{form.name }}
-        </div>
+            {{form.name}}
+    </div>
     </div>
     <div class="data-container">
         <div class="label-div">
@@ -19,7 +18,7 @@
             {{table.name }}
         </div>
     </div>
-    <div class="data-container">
+    <div class="data-container"  *ngIf="(form.type!=null)&&(form.type!='')">
         <div class="label-div">
             Type :
         </div>
@@ -27,7 +26,7 @@
             {{form.type }}
         </div>
     </div>
-    <div class="data-container">
+    <div class="data-container" *ngIf="(form.formType!=null)&&(form.formType!='')">
         <div class="label-div">
             Form Type :
         </div>
@@ -35,7 +34,7 @@
             {{form.formType }}
         </div>
     </div>
-    <div class="data-container">
+    <div class="data-container" *ngIf="(form.sequence!=null)">
         <div class="label-div">
             Sequence :
         </div>
@@ -43,7 +42,7 @@
             {{form.sequence }}
         </div>
     </div>
-    <div class="data-container">
+    <div class="data-container" *ngIf="(form.comment!=null)&&(form.comment!='')">
         <div class="label-div">
             Comment:
         </div>
@@ -51,7 +50,7 @@
             {{form.comment }}
         </div>
     </div>
-    <div class="data-container">
+    <div class="data-container" *ngIf="(form.condition!=null)&&(form.condition!='')">
         <div class="label-div">
             Condition:
         </div>
@@ -59,6 +58,63 @@
             {{form.condition }}
         </div>
     </div>
+    <div class="data-container" *ngIf="(form.tabCondition!=null)&&(form.tabCondition!='')">
+        <div class="label-div">
+            Tab Condition:
+        </div>
+        <div class="data-div">
+            {{form.tabCondition }}
+        </div>
+    </div>
+    <div class="data-container" *ngIf="(form.tabResourceName!=null)&&(form.tabResourceName!='')">
+        <div class="label-div">
+            Tab Resource:
+        </div>
+        <div class="data-div">
+            {{form.tabResourceName }}
+        </div>
+    </div>
+    <div class="data-container" *ngIf="(form.minOccurs!=null)">
+        <div class="label-div">
+            Minimum Occurs:
+        </div>
+        <div class="data-div">
+            {{form.minOccurs }}
+        </div>
+    </div>
+    <div class="data-container" *ngIf="(form.maxOccurs!=null)">
+        <div class="label-div">
+            Maximum Occurs:
+        </div>
+        <div class="data-div">
+            {{form.maxOccurs }}
+        </div>
+    </div>
+    <div class="data-container" *ngIf="(form.helpText!=null)&&(form.helpText!='')">
+        <div class="label-div">
+            Help Text:
+        </div>
+        <div class="data-div">
+            {{form.helpText}}
+        </div>
+    </div>
+    <div class="data-container" *ngIf="(form.scriptBefore!=null)&&(form.scriptBefore.trim()!='')">
+        <div class="label-div">
+            Script Before:
+        </div>
+        <div class="data-div">
+            {{form.scriptBefore}}
+        </div>
+    </div>
+    <div class="data-container" *ngIf="(form.scriptAfter!=null)&&(form.scriptAfter.trim()!='')">
+        <div class="label-div">
+            Script After:
+        </div>
+        <div class="data-div">
+            {{form.scriptAfter}}
+        </div>
+    </div>
+    
     <button class="btn btn-warning" routerLink="/Update-Page/{{formId}}">Edit Details</button>
     <button class="btn btn-danger" (click)="deleteForm(formId)">Delete Form</button>
 </div>

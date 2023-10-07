@@ -40,7 +40,7 @@ export class PageSearchComponent implements OnInit{
         (item.type === 'Form' && this.formCheckBox) ||
         (item.type === 'Summary' && this.summaryCheckBox));
        
-      console.log(this.filteredForm);
+      //console.log(this.filteredForm);
     }
     else {
       this.filteredForm=this.formService.searchResultForm;
@@ -70,7 +70,7 @@ export class PageSearchComponent implements OnInit{
       this.formService.getAllForms().subscribe({
         next:(res)=>{
           this.formService.searchResultForm=res;
-          console.log(this.formService.searchResultForm);
+          //console.log(this.formService.searchResultForm);
           this.filterForm();
           this.totalLength = this.filteredForm.length
         },
@@ -85,7 +85,7 @@ export class PageSearchComponent implements OnInit{
         this.formService.getFormsByName(this.searchValue).subscribe({
                 next:(res)=>{
                   this.formService.searchResultForm=res;
-                  console.log(this.formService.searchResultForm);
+                  //console.log(this.formService.searchResultForm);
                   this.filterForm();
                   // alert("Error in fetching Table Names:"+res)
                 },
@@ -101,11 +101,12 @@ export class PageSearchComponent implements OnInit{
         this.formService.getFormsByNumber(this.searchValue).subscribe({
           next:(res)=>{
             this.formService.searchResultForm=res
-            console.log(this.formService.searchResultForm);
+            //console.log(this.formService.searchResultForm);
             this.filterForm();
             },
             error: (err) => {
               alert("No forms found")
+              this.filteredForm = {}
               }
         })
     }

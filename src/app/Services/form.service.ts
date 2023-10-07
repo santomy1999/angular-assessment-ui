@@ -169,7 +169,7 @@ export class FormService {
     this.getTableNames().subscribe({
       next:(res)=>{
         this.tableNames=res
-        console.log(this.tableNames);
+        //console.log(this.tableNames);
       },
       error: (err) => {
         alert("Error in fetching Table Names:"+err)

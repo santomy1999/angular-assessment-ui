@@ -1,6 +1,6 @@
 export interface Form {
     id:any,
-    name:  any,
+    name:  string,
     number:  any,
     addChangeDeleteFlag:  any,
     btnCndAdd:  any,
@@ -24,12 +24,12 @@ export interface Form {
     btnResRenumber:  any,
     btnResView:  any,
     btnResViewDetail:  any,
-    comment:  any,
-    condition:  any,
-    helpText:  any,
+    comment:  string,
+    condition:  string,
+    helpText:  string,
     hidden:  number,
     hidePremium:  number,
-    formType: any,
+    formType: string,
     scriptBefore: any,
     scriptAfter: any,
     maxOccurs:  number,
@@ -37,10 +37,10 @@ export interface Form {
     ratebookId: any,
     sequence:  number,
     subSequence:  number,
-    tabCondition:  any,
-    tabResourceName:  any,
+    tabCondition:  string,
+    tabResourceName:  string,
     tableId:  any,
     table: any,
     templateFile:  any,
-    type:  any
+    type:  string
 }

@@ -11,8 +11,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class PageViewComponent implements OnInit{
   form :Form ={
     id:'00000000-0000-0000-0000-000000000000',
-    name: null,
-    number: null,
+    name: '',
+    number: '',
     addChangeDeleteFlag: null,
     btnCndAdd: null,
     btnCndCopy: null,
@@ -35,12 +35,12 @@ export class PageViewComponent implements OnInit{
     btnResRenumber: null,
     btnResView: null,
     btnResViewDetail: null,
-    comment: null,
-    condition: null,
-    helpText: null,
+    comment: '',
+    condition: '',
+    helpText: '',
     hidden: 0,
     hidePremium: 0,
-    formType:null,
+    formType:'',
     scriptBefore:null,
     scriptAfter:null,
     maxOccurs: 0,
@@ -48,12 +48,12 @@ export class PageViewComponent implements OnInit{
     ratebookId: '00000000-0000-0000-0000-000000000000',
     sequence: 0,
     subSequence: 0,
-    tabCondition: null,
-    tabResourceName: null,
+    tabCondition: '',
+    tabResourceName: '',
     tableId: null,
     table:null,
     templateFile: null,
-    type: null
+    type: ''
   }
   formId :any
   result:any
@@ -73,7 +73,7 @@ getForm(){
   this.result = this.formService.getFormById(this.formId).subscribe({
     next:(res)=>{
       this.form=res;
-      console.log(this.form)
+      //console.log(this.form)
       // console.log(this.form.tableId)
       this.getTableName()
     },
@@ -87,7 +87,7 @@ getTableName(){
     this.result= this.formService.getTableById(this.form.tableId).subscribe({
       next:(res)=>{
         this.table=res
-        console.log(this.table); 
+        //console.log(this.table); 
       },
       error: (err) => {
         alert("Error in fetching Table Names:"+err)
@@ -101,7 +101,7 @@ deleteForm(id:string){
   if(confirm("Are you sure you want to permenantly delete this form? ")){
     this.formService.deleteForm(id).subscribe({
       next:(res)=>{
-        console.log(res)
+        //console.log(res)
         alert("Page Deleted Successfully\n Form Name:"+res.name)
         this.router.navigate(['Search-Page'])
       },
