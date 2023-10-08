@@ -53,8 +53,8 @@ export class FormService {
       );
   }
   
-  getAllForms(): Observable<any> {
-    return this.http.get(this.urls.getAllFormsrUrl)
+  getAllForms(pageNumber:number = 1, pageSize:number=15): Observable<any> {
+    return this.http.get(this.urls.getAllFormsrUrl+"?pageNumber="+pageNumber+"&pageSize="+pageSize)
       .pipe(
         catchError((error: HttpErrorResponse) => {
           if (error.status === 404) {
@@ -69,8 +69,8 @@ export class FormService {
         })
       );
   }
-  getFormById(id:string):Observable<any>{
-    return this.http.get(this.urls.getFormByIdUrl + id)
+  getFormById(id:string,pageNumber:number = 1, pageSize:number=15):Observable<any>{
+    return this.http.get(this.urls.getFormByIdUrl + id+"?pageNumber="+pageNumber+"&pageSize="+pageSize)
       .pipe(
         catchError((error: HttpErrorResponse) => {
           if (error.status === 404) {
@@ -85,8 +85,8 @@ export class FormService {
         })
       );
   }
-  getFormsByName(name: string): Observable<any> {
-    return this.http.get(this.urls.getFormsByNameUrl + name)
+  getFormsByName(name: string, pageNumber:number = 1, pageSize:number=15): Observable<any> {
+    return this.http.get(this.urls.getFormsByNameUrl + name+"?pageNumber="+pageNumber+"&pageSize="+pageSize)
       .pipe(
         catchError((error: HttpErrorResponse) => {
           if (error.status === 404) {
@@ -101,8 +101,8 @@ export class FormService {
         })
       );
   }
-  getFormsByNumber(number: string): Observable<any> {
-    return this.http.get(this.urls.getFormsByNumberUrl + number)
+  getFormsByNumber(number: string,pageNumber:number = 1, pageSize:number=15): Observable<any> {
+    return this.http.get(this.urls.getFormsByNumberUrl + number+"?pageNumber="+pageNumber+"&pageSize="+pageSize)
       .pipe(
         catchError((error: HttpErrorResponse) => {
           if (error.status === 404) {

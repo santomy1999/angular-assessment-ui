@@ -17,9 +17,12 @@ export class PageSearchComponent implements OnInit{
   filteredForm:any;
   searchValue:string='';
 
-  page:number=1
+  pageNumber:number=1
+  pageSize:number=10;
+  
   lengthofData = 0;
   totalLength: number = 0;
+ 
 
   detailCheckBox:Boolean=false;
   formCheckBox:Boolean=false;
@@ -45,7 +48,7 @@ export class PageSearchComponent implements OnInit{
     else {
       this.filteredForm=this.formService.searchResultForm;
     }
-    this.page=1
+    // this.pageNumber=1
   }
   
 
@@ -64,10 +67,15 @@ export class PageSearchComponent implements OnInit{
   onSearch(){
     // console.log(this.searchBy)
     // validate the data
-    window.scrollTo(400, 400) //bring page to the table
+    // window.scrollTo(400, 400) //bring page to the table
+    this.pageNumber=1
+    this.searchResults()
+    // this.filteredForm=this.formService.searchResultForm;
+  }
+  searchResults(){
     this.searchValue=this.searchValue.trim();
     if(this.searchValue==''){
-      this.formService.getAllForms().subscribe({
+      this.formService.getAllForms(this.pageNumber,this.pageSize).subscribe({
         next:(res)=>{
           this.formService.searchResultForm=res;
           //console.log(this.formService.searchResultForm);
@@ -82,7 +90,7 @@ export class PageSearchComponent implements OnInit{
 
     else if(this.searchBy=='name')
     {
-        this.formService.getFormsByName(this.searchValue).subscribe({
+        this.formService.getFormsByName(this.searchValue,this.pageNumber,this.pageSize).subscribe({
                 next:(res)=>{
                   this.formService.searchResultForm=res;
                   //console.log(this.formService.searchResultForm);
@@ -90,28 +98,27 @@ export class PageSearchComponent implements OnInit{
                   // alert("Error in fetching Table Names:"+res)
                 },
                 error: (err) => {
-                  alert("No forms found")
                   this.filteredForm = {}
+                  // alert("No forms found" +this.filterForm.length)
                 }
               })
     }
     else if(this.searchBy=='number')
     {
 
-        this.formService.getFormsByNumber(this.searchValue).subscribe({
+        this.formService.getFormsByNumber(this.searchValue,this.pageNumber,this.pageSize).subscribe({
           next:(res)=>{
             this.formService.searchResultForm=res
             //console.log(this.formService.searchResultForm);
             this.filterForm();
             },
             error: (err) => {
-              alert("No forms found")
+              // alert("No forms found")
               this.filteredForm = {}
               }
         })
     }
 
-    // this.filteredForm=this.formService.searchResultForm;
   }
   deleteForm(id:string){
     if(confirm("Are you sure you want to permenantly delete this form? ")){
@@ -127,5 +134,16 @@ export class PageSearchComponent implements OnInit{
       });
     }
   }
-  
+  onNext(){
+    if(this.pageNumber>=1 && this.filteredForm.length>=this.pageSize){
+      this.pageNumber++
+      this.searchResults();
+    }
+  }
+  onPrevious(){
+    if(this.pageNumber>1){
+      this.pageNumber--
+      this.searchResults();
+    }
+  }
 }

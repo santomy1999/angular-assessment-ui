@@ -1,16 +1,19 @@
 /* Center align the form */
+
 .container {
+    text-align: center;
     min-height: 80vh;
     margin: 20px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    align-items: right;
+    align-items: center;
     max-width: 90%;
     /* min-height: 600px; */
 }
 
 .form-div {
     margin: 20px;
+    
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -51,6 +54,9 @@
 } 
 .btn {
     margin:0px 15px;
+}
+.button-cell {
+    text-align: center;
 }
 .table {
     padding: 3px;
