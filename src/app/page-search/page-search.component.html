@@ -105,8 +105,8 @@
         </tbody>
         
     </table>
-        <!-- <pagination-controls *ngIf="filteredForm.length>0" (pageChange)="page = $event"></pagination-controls> -->
-        <div class="paginations-controls" *ngIf="filteredForm.length>0;else noforms">
+       
+        <div class="paginations-controls" id ="pageinations-controls" *ngIf="filteredForm.length>0;else noforms">
             <button class="btn btn-primary" id="Previous" (click)="onPrevious()" >
                 <-Previous
             </button>

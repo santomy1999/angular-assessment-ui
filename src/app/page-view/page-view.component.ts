@@ -73,8 +73,6 @@ getForm(){
   this.result = this.formService.getFormById(this.formId).subscribe({
     next:(res)=>{
       this.form=res;
-      //console.log(this.form)
-      // console.log(this.form.tableId)
       this.getTableName()
     },
     error: (err) => {
@@ -86,8 +84,7 @@ getTableName(){
   if(this.form.tableId !=null){
     this.result= this.formService.getTableById(this.form.tableId).subscribe({
       next:(res)=>{
-        this.table=res
-        //console.log(this.table); 
+        this.table=res 
       },
       error: (err) => {
         alert("Error in fetching Table Names:"+err)
@@ -101,7 +98,6 @@ deleteForm(id:string){
   if(confirm("Are you sure you want to permenantly delete this form? ")){
     this.formService.deleteForm(id).subscribe({
       next:(res)=>{
-        //console.log(res)
         alert("Page Deleted Successfully\n Form Name:"+res.name)
         this.router.navigate(['Search-Page'])
       },

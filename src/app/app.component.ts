@@ -12,7 +12,6 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     window.scrollTo(0, 0)
     this.formService.loadTableNames();
-    //console.log(this.formService.tableNames)
   }
   
 }

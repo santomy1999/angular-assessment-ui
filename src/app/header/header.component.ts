@@ -7,7 +7,6 @@ import { Router  } from '@angular/router';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
-  // image_hidden='false';
   constructor(private router:Router){
   }
   image_display(){

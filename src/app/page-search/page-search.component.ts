@@ -9,7 +9,6 @@ import { FormService } from '../Services/form.service';
   styleUrls: ['./page-search.component.css']
 })
 export class PageSearchComponent implements OnInit{
-  // formService.searchResultForm:Form[]=[];
   constructor(private formService:FormService){ }
 
 
@@ -43,12 +42,10 @@ export class PageSearchComponent implements OnInit{
         (item.type === 'Form' && this.formCheckBox) ||
         (item.type === 'Summary' && this.summaryCheckBox));
        
-      //console.log(this.filteredForm);
     }
     else {
       this.filteredForm=this.formService.searchResultForm;
     }
-    // this.pageNumber=1
   }
   
 
@@ -65,12 +62,8 @@ export class PageSearchComponent implements OnInit{
     this.searchValue='';
   }
   onSearch(){
-    // console.log(this.searchBy)
-    // validate the data
-    // window.scrollTo(400, 400) //bring page to the table
     this.pageNumber=1
     this.searchResults()
-    // this.filteredForm=this.formService.searchResultForm;
   }
   searchResults(){
     this.searchValue=this.searchValue.trim();
@@ -78,7 +71,6 @@ export class PageSearchComponent implements OnInit{
       this.formService.getAllForms(this.pageNumber,this.pageSize).subscribe({
         next:(res)=>{
           this.formService.searchResultForm=res;
-          //console.log(this.formService.searchResultForm);
           this.filterForm();
           this.totalLength = this.filteredForm.length
         },
@@ -93,13 +85,10 @@ export class PageSearchComponent implements OnInit{
         this.formService.getFormsByName(this.searchValue,this.pageNumber,this.pageSize).subscribe({
                 next:(res)=>{
                   this.formService.searchResultForm=res;
-                  //console.log(this.formService.searchResultForm);
                   this.filterForm();
-                  // alert("Error in fetching Table Names:"+res)
                 },
                 error: (err) => {
                   this.filteredForm = {}
-                  // alert("No forms found" +this.filterForm.length)
                 }
               })
     }
@@ -109,11 +98,9 @@ export class PageSearchComponent implements OnInit{
         this.formService.getFormsByNumber(this.searchValue,this.pageNumber,this.pageSize).subscribe({
           next:(res)=>{
             this.formService.searchResultForm=res
-            //console.log(this.formService.searchResultForm);
             this.filterForm();
             },
             error: (err) => {
-              // alert("No forms found")
               this.filteredForm = {}
               }
         })
@@ -124,7 +111,6 @@ export class PageSearchComponent implements OnInit{
     if(confirm("Are you sure you want to permenantly delete this form? ")){
       this.formService.deleteForm(id).subscribe({
         next:(res)=>{  
-            // console.log(res)
           alert("Page Deleted Successfully\n Form Name:"+res.name)
           this.onSearch()
         },

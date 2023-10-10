@@ -58,7 +58,6 @@ export class PageEditComponent implements OnInit{
   }
   ngOnInit(): void {
     window.scrollTo(0, 0)
-    //console.log(this.formService.tableNames)
     this.id = this.activatedRoute.snapshot.paramMap.get('id')
     this.formService.getFormById(this.id).subscribe({
       next:(res)=>

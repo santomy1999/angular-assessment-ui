@@ -1,4 +1,4 @@
-// import { HttpClient } from '@angular/common/http';
+
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormService } from '../Services/form.service';
 import { Form } from '../Models/form';
@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 })
 
 export class PageCreateComponent {
-  // form:any
+ 
   @ViewChild('createPage') form :NgForm | undefined;
   newForm :Form ={
     id: '00000000-0000-0000-0000-000000000000',
@@ -63,7 +63,7 @@ export class PageCreateComponent {
   
 
   tableNames:any= [];
-  // newForm : Form | undefined ;
+
   isFormTypeDisabled:Boolean = true
   isFormTypeRequired:Boolean = true
 
@@ -76,7 +76,7 @@ export class PageCreateComponent {
     this.formService.getTableNames().subscribe({
       next:(res)=>{
         this.tableNames=res
-        //console.log(this.tableNames);
+       
       },
       error: (err) => {
         alert("Error in fetching Table Names:"+err)
@@ -101,7 +101,6 @@ export class PageCreateComponent {
     this.newForm.formType = this.form?.value.FormType ?? null
     this.newForm.number= this.form?.value.Number ?? null
     this.newForm.sequence = this.form?.value.Sequence?? 0
-    // this.newForm.subSequence = this.form?.value.SubSequence?? 0
     this.newForm.sequence = this.form?.value.Sequence !== "" ? this.form?.value.Sequence : 0;
     this.newForm.subSequence = this.form?.value.SubSequence !== "" ? this.form?.value.SubSequence : 0;
     this.newForm.comment = this.form?.value.Comment?? null
@@ -125,7 +124,6 @@ export class PageCreateComponent {
     else this.newForm.hidden = 0
     
 
-    //console.log(this.newForm);
     this.sendPostRequest();
     }
     else{
@@ -146,8 +144,5 @@ export class PageCreateComponent {
     }
     )
   }
-//   formTypeValidation(){
-//   }
-  
 }
 
