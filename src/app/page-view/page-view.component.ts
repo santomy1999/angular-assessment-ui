@@ -57,7 +57,7 @@ export class PageViewComponent implements OnInit{
   }
   formId :any
   result:any
-  tableNames: any
+  tableNames:any=[]
   table :any
   constructor(private formService :FormService,private activatedRoute:ActivatedRoute,private router:Router){
     

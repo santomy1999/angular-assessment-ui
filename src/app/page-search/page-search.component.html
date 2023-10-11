@@ -43,11 +43,6 @@
                 </div>
                 
             </div>
-            <!-- <div class="row">
-                <div class="col-12">
-                    
-                </div>
-            </div> -->
             <div class="row">
                 <div class="col-6">
                 <input class="btn btn-success" type="submit" value="Search">
@@ -66,25 +61,18 @@
                 <th scope="col">Name</th>
                 <th scope="col">Number</th>
                 <th scope="col">Type</th>
-                <!-- <th>Form Type</th> -->
                 <th scope="col">Sequence</th>
                 <th scope="col">Comment</th>
                 
                 <th scope="col"> </th>
                 <th scope="col">Action</th>
-<!-- 
-                <th scope="col">View Page</th>
-                <th scope="col">Edit Page</th>
-                <th scope="col">Delete Page</th>
-                <th scope="col">Action Page</th> -->
+
             </tr>
         </thead>
         <tbody >
             
             <tr  *ngFor="let form of filteredForm ">
-                <!-- | paginate:{ itemsPerPage :10, currentPage:page,totalItems:filteredForm.length} " id="pagination"> -->
-        <!-- </tr>/*| paginate:{itemsPerPage:50,currentPage:page,totalItems:totalLength,id:'formPagination'}*/"> -->
-                <td>{{form.name}}</td>
+               <td>{{form.name}}</td>
                 <td>{{form.number}}</td>
                 <td>{{form.type}}</td>
                 <td>{{form.sequence}}</td>
@@ -98,10 +86,7 @@
                     <button class="btn btn-outline-danger" style="color: black;" routerLink="/Search-Page" (click)="deleteForm(form.id)">Delete</button>
                 </td>
            
-                <!-- <td><button class="btn btn-outline-info" style="color: black;" routerLink="/View-Page/{{form.id}}">View</button></td>
-                <td><button class="btn btn-outline-warning" style="color: black;" routerLink="/Update-Page/{{form.id}}">Edit</button></td>
-                <td><button class="btn btn-outline-danger" style="color: black;" routerLink="/Search-Page" (click)="deleteForm(form.id)">Delete</button></td> -->     
-            </tr>
+                </tr>
         </tbody>
         
     </table>
